@@ -1,2 +1,2 @@
-# WoodLeerEngineers
-Web pet food dispenser
+# Wet Pet Food Dispenser
+Capstone Project by Wood Leer Engineers
