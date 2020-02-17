@@ -1,11 +1,19 @@
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
-#include <time.h>
+#include <NTPClient.h>
+#include <WiFiUdp.h>
 
-int timezone = 3;
-int dst = 0;
+// Define NTP Client to get time
+WiFiUDP ntpUDP;
+NTPClient timeClient(ntpUDP);
+// Variables to save date and time
+String formattedDate;
+String dayStamp;
+String timeStamp;
 
+
+// WiFi id and password
 static char* ssid = "SlowPanda";
 static char* password = "dreambelievelovelive";
 
@@ -81,10 +89,37 @@ void handleNotFound() {
   server.send(404, "text/plain", message);
 }
 
+
+//
+String getTimeStampString() {
+   time_t rawtime = timeClient.getEpochTime();
+   struct tm * ti;
+   ti = localtime (&rawtime);
+
+   uint16_t year = ti->tm_year + 1900;
+   String yearStr = String(year);
+
+   uint8_t month = ti->tm_mon + 1;
+   String monthStr = month < 10 ? "0" + String(month) : String(month);
+
+   uint8_t day = ti->tm_mday;
+   String dayStr = day < 10 ? "0" + String(day) : String(day);
+
+   uint8_t hours = ti->tm_hour;
+   String hoursStr = hours < 10 ? "0" + String(hours) : String(hours);
+
+   uint8_t minutes = ti->tm_min;
+   String minuteStr = minutes < 10 ? "0" + String(minutes) : String(minutes);
+
+   return yearStr + "/" + monthStr + "/" + dayStr + " " +
+          hoursStr + ":" + minuteStr;
+}
+
+
 // In the setup function we initialize the different things
 // that will be needed in our program, as well as set up the hardware
 void setup(void) {
-
+  
   // Set the LED pins to act as digital outputs and set them to a LOW 
   // state initially.
   pinMode(led1_pin, OUTPUT);
@@ -93,7 +128,7 @@ void setup(void) {
   digitalWrite(led2_pin, LOW);
 
   // Start the Serial communication for debugging purposes
-  Serial.begin(115200);
+  Serial.begin(9600);
   //  Initialize the WiFi client and try to connect to our Wi-Fi network
   WiFi.begin(ssid, password);
   Serial.println("");
@@ -120,20 +155,35 @@ void setup(void) {
   Serial.println("HTTP server started");
 
   // configure time
-  configTime(3 * 3600, 0, "pool.ntp.org", "time.nist.gov");
-  Serial.println("\nWaiting for time");
-  while (!time(nullptr)) {
-    Serial.print(".");
-    delay(1000);
-  }
-  Serial.println("");
+  timeClient.begin();
+  // Set offset time in seconds to adjust for your timezone, for example:
+  // GMT +1 = 3600
+  // GMT +8 = 28800
+  // GMT -1 = -3600
+  // GMT 0 = 0
+  timeClient.setTimeOffset(-3600*5);
+
+  //Serial.end();
+  
+  //Serial.begin(9600);
+
 }
 
 // The loop function is straight-forward, simply handle any incoming requests to the
 // our ESP8266 host!
 void loop(void) {
   server.handleClient();
-  time_t now = time(nullptr);
-  Serial.println(ctime(&now));
-  delay(1000);
+  
+  while(!timeClient.update()) {
+    timeClient.forceUpdate();
+  }
+  // The formattedDate comes with the following format:
+  // 2018-05-28T16:00:13Z
+  // We need to extract date and time
+  //formattedDate = timeClient.getFormattedTime();
+  //Serial.println(getTimeStampString());
+  Serial.write("5");
+  //Serial.println("\n");
+  delay(10000);
+  
 }
