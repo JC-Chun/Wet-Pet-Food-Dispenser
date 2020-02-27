@@ -2,9 +2,9 @@
 
 //uses HC-SR04 - https://github.com/Martinsos/arduino-lib-hc-sr04
 
-// Initialize sensor that uses digital pins 13 and 12.
-int triggerPin = 13;
-int echoPin = 12;
+// Initialize sensor that uses digital pins 52 and 53.
+int triggerPin = 52;
+int echoPin = 53;
 UltraSonicDistanceSensor distanceSensor(triggerPin, echoPin);
 
 void setup () {
@@ -15,6 +15,7 @@ void loop () {
   // Every 500 miliseconds, do a measurement using the sensor and print the distance in centimeters.
   double distance = distanceSensor.measureDistanceCm();
   Serial.println(distance);
+  Serial.println("hello");
   delay(500);
 }
 
