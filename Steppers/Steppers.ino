@@ -1,3 +1,5 @@
+// This program tests stepper motors to ensure they are properly connected and rotating. Users should specify steps and speed to increase or decrease speed of rotation. 
+
 #include <Stepper.h>
 
 // Define step constants
@@ -16,11 +18,10 @@ int StepsRequired;
  
 // Create Instance of Stepper Class
 // Specify Pins used for motor coils
-// The pins used are 2,3,4,5 for stepper1
 // Connected to ULN2003 Motor Driver In1, In2, In3, In4 
 // Pins entered in sequence 1-3-2-4 for proper step sequencing
 Stepper stepper1(STEPS_PER_REV, 4, 6, 5, 7);    //IN1, IN3, IN2, IN4
-Stepper stepper2(STEPS_PER_REV, 8, 10, 9, 11);
+Stepper stepper2(STEPS_PER_REV, 2, 11, 3, 12);  //IN1, IN3, IN2, IN4
  
 void setup()
 {
