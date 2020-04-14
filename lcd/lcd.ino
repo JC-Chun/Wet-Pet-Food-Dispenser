@@ -25,7 +25,7 @@ int pbStatus[5];
 
 //used in measure_screen_cup()
 int portionSize = 1;  //start with 1 cup
-bool measure_screen_cup = true;
+bool measure_screen_cup_bool = true;
 int current_cup_size;
 
 bool return_tray = true;
@@ -50,6 +50,15 @@ int current_hour;
 bool set_min_bool = true;
 int set_min = 1;
 int current_min;
+
+bool food_scheduled_bool = true;
+
+bool water_sensor_bool = false;
+bool bowl_sensor_bool = false;
+bool food_sensor_bool = false;
+bool need_food = true;
+bool need_water = true;
+bool bowl_sensor = false;
 
 void setup() 
 {
@@ -95,8 +104,7 @@ void homescreen()
   if (pb[1] == LOW)
   {
     // feed now
-    current_cup_size = measure_screen_cup(portionSize);
-    portionSize = current_cup_size;
+    feedNow();
   }
   else if (pb[2] == LOW)
   {
@@ -110,9 +118,30 @@ void homescreen()
   }
 }
 
+void feedNow()
+{
+  current_cup_size = measure_screen_cup(portionSize);
+  portionSize = current_cup_size;
+  measure_screen_cup_bool = true;
+
+  while (need_food)
+  {
+    display_food_warning_low();   //LCD display
+    need_food = check_sensor_food();
+  }
+  
+  while (need_water)
+  {
+    dispaly_water_warning_low();   //LCD display
+    need_water = check_sensor_water();
+  }
+
+  //show that food is dispensed
+}
+
 int measure_screen_cup(portionSize)
 {
-  while (measure_screen_cup)
+  while (measure_screen_cup_bool)
   {
     int* pb = readPB();
   
@@ -120,7 +149,7 @@ int measure_screen_cup(portionSize)
     
     if (pb[0] == LOW)
     {
-      measure_screen_cup = false;
+      measure_screen_cup_bool = false;
       homescreen();
     }
     else if (pb[1] == LOW)
@@ -134,7 +163,7 @@ int measure_screen_cup(portionSize)
     }
     else if (pb[4] == LOW)
     {
-      measure_screen_cup = false;
+      measure_screen_cup_bool = false;
       //continue to next screen -- jump to check sensor function
     }
   }
@@ -144,6 +173,7 @@ int measure_screen_cup(portionSize)
 void feedLater()
 {
   selectDate();
+  
 }
 
 void selectDate();
@@ -163,18 +193,21 @@ void selectDate();
     //jump to Select Month
     current_month = selectMonth(set_month);
     set_month = current_month;
+    set_month_bool = true;
   }
   else if (pb[2] == LOW)
   {
     //jump to Select Day
     current_day = selectDay(set_day);
     set_day = current_day;
+    set_day_bool = true;
   }
   else if (pb[3] == LOW)
   {
     //jump to Select Year
     current_year = selectYear();
     set_year = current_year;
+    set_year_bool = true;
   }
   else if (pb[4] == LOW)
   {
@@ -253,7 +286,7 @@ int selectDay()
     else if (pb[4] == LOW)
     {
       set_day_bool = false;
-      //continue to next screen -- jump to select date screen, displaying set_month
+      //continue to next screen -- jump to select date screen, displaying set_day
     }
   }
   return set_day;
@@ -288,7 +321,7 @@ int selectYear()
     else if (pb[4] == LOW)
     {
       set_year_bool = false;
-      //continue to next screen -- jump to select date screen, displaying set_month
+      //continue to next screen -- jump to select date screen, displaying set_year
     }
   }
   return set_year;
@@ -312,28 +345,106 @@ void selectTime()
     //jump to Select hour
     current_hour = selectHour(set_hour);
     set_hour = current_hour;
+    set_hour_bool = true;
   }
   else if (pb[3] == LOW)
   {
     //jump to Select Minute
     current_min = selectMinute(set_min);
     set_min = current_min;
+    set_min_bool = true;
   }
   else if (pb[4] == LOW)
   {
-    //jump to Set Time
-    selectTime();
+    //jump to measure food
+    current_cup_size = measure_screen_cup(portionSize);
+    portionSize = current_cup_size;
+    measure_screen_cup_bool = true;
+    display_food_scheduled();
   }
 }
 
 int selectHour()
 {
+  while (set_hour_bool)
+  {
+    int* pb = readPB();
   
+    //only observe pushbuttons 1, 2, 4, 5
+    
+    if (pb[0] == LOW)
+    {
+      set_hour_bool = false;
+      selectTime();
+    }
+    else if (pb[1] == LOW)
+    {
+      // decrease hour
+      if (set_hour > 0 && set_hour <= 24)
+      {
+        set_hour -= 1;
+      }
+    }
+    else if (pb[3] == LOW)
+    {
+      // increase hour
+      if (set_hour >= 0 && set_hour < 24)
+      {
+        set_hour += 1;
+      }
+    }
+    else if (pb[4] == LOW)
+    {
+      set_hour_bool = false;
+      //continue to next screen -- jump to select time screen, displaying set_hour
+    }
+  }
+  return set_hour;
 }
+
+int selectMinute()
+{
+  while (set_min_bool)
+  {
+    int* pb = readPB();
+  
+    //only observe pushbuttons 1, 2, 4, 5
+    
+    if (pb[0] == LOW)
+    {
+      set_min_bool = false;
+      selectTime();
+    }
+    else if (pb[1] == LOW)
+    {
+      // decrease minute
+      if (set_min > 0 && set_min <= 60)
+      {
+        set_min -= 1;
+      }
+    }
+    else if (pb[3] == LOW)
+    {
+      // increase minute
+      if (set_min >= 0 && set_min < 60)
+      {
+        set_min += 1;
+      }
+    }
+    else if (pb[4] == LOW)
+    {
+      set_min_bool = false;
+      //continue to next screen -- jump to select time screen, displaying set_min
+    }
+  }
+  return set_min;
+}
+
 void cleanBowl()
 {
   //warning, tray is extracted...
   //swing open tray using motor or servo
+  //also uses weight sensor to ensure that the bowl is there
   
   int* pb = readPB();
   
@@ -355,13 +466,58 @@ void returnTray()
   while(return_tray)
   {
     int* pb = readPB();
-    
-    if (pb[2] == LOW)
+    bowl_sensor = check_bowl_sensor();
+    if (pb[2] == LOW && bowl_sensor == true)
     {
       return_tray = false;
+      //retract tray -- reverse motor direction to close tray
       homescreen();
     }
   }
+}
+
+void display_food_scheduled()
+{
+  while (food_scheduled_bool)
+  {
+    int* pb = readPB();
+  
+    if (pb[2] == LOW)
+    {
+      food_scheduled_bool = false;
+      homescreen();
+    }
+  }
+}
+
+bool check_water_sensor()
+{
+  //use weight sensor
+  if weight < water_weight
+  {
+    water_sensor_bool = true;
+  }
+  return water_sensor_bool;
+}
+
+bool check_bowl_sensor()
+{
+  //use weight sensor
+  if weight < bowl_weight
+  {
+    bowl_sensor_bool = true;
+  }
+  return bowl_sensor_bool;
+}
+
+bool check_food_sensor()
+{
+  //use ultrasonic distance sensor 
+  if distance < storage_distance
+  {
+    food_sensor_bool = true;
+  }
+  return food_sensor_bool;
 }
 
 void loop()
