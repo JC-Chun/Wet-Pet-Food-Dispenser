@@ -1,4 +1,5 @@
 // Date and time functions using a PCF8523 RTC connected via I2C and Wire lib
+// Install RTClib by Adafruit
 #include "RTClib.h"
 
 RTC_PCF8523 rtc;
