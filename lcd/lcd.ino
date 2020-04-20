@@ -92,8 +92,29 @@ int* readPB()
   return pbStatus;
 }
 
-//Home Screen Page
-void homescreen()
+//Home Screen Page -- has 2 options (for Wi-Fi connection: Feed Now, Clean Bowl)
+void homescreen1()
+{
+  //wait for input
+  int* pb = readPB();
+
+  //only observe pushbuttons 2, 3, 4
+  //pb[1] = pb2, pb[2] = pb3, pb[3] = pb4;
+  
+  if (pb[1] == LOW)
+  {
+    // feed now
+    feedNow();
+  }
+  else if (pb[3] == LOW)
+  {
+    // clean tray
+    cleanBowl();
+  }
+}
+
+//Home Screen Page -- has 3 options (for Wi-Fi connection: Feed Now, Feed Later, Clean Bowl)
+void homescreen2()
 {
   //wait for input
   int* pb = readPB();
@@ -173,7 +194,6 @@ int measure_screen_cup(portionSize)
 void feedLater()
 {
   selectDate();
-  
 }
 
 void selectDate();
