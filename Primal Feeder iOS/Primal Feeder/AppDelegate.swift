@@ -26,8 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         sleep(1)
         UITabBar.appearance().tintColor = getColorByHex(rgbHexValue: 0xD4E38F, alpha: 1)
-        requestNotificationAuthorization(application: application)
         
+        requestNotificationAuthorization(application: application)
+        applicationDidBecomeActive(application)
         return true
     }
 
@@ -56,6 +57,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationDidBecomeActive(_ application: UIApplication) {
         UIApplication.shared.applicationIconBadgeNumber = 0
     }
-    
 }
 

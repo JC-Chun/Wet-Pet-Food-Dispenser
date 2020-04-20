@@ -61,9 +61,10 @@ class Schedule {
         }
     }
     
-    static func swipeDeleteMeal(index: Int) {
+    static func deleteMeal(at scheduleIndex: Int, meal: MealList) {
         // delete a meal
-        Data.mealSchedules.remove(at: index)
+        guard let index = Data.mealSchedules[scheduleIndex].mealList.firstIndex(of: meal) else { return }
+        Data.mealSchedules[scheduleIndex].mealList.remove(at: index)
     }
     
 }

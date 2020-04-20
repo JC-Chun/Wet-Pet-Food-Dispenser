@@ -9,7 +9,7 @@
 import UIKit
 
 class SettingHeaderTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var settingHeaderLabel: UILabel!
     
     override func awakeFromNib() {

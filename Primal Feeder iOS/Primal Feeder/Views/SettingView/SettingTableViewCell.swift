@@ -8,7 +8,16 @@
 
 import UIKit
 
+// Settings table cells
 class SettingTableViewCell: UITableViewCell {
+    
+    var sectionType: SectionType? {
+        didSet {
+            guard let sectionType = sectionType else { return }
+            textLabel?.text = sectionType.description
+            switchControl.isHidden = !sectionType.containsSwitch
+        }
+    }
     
     lazy var switchControl: UISwitch = {
         let switchControl = UISwitch()
@@ -17,13 +26,14 @@ class SettingTableViewCell: UITableViewCell {
         switchControl.addTarget(self, action: #selector(handleSwitchAction), for: .valueChanged)
         return switchControl
     }()
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-    
+
         addSubview(switchControl)
+        switchControl.translatesAutoresizingMaskIntoConstraints = false
         switchControl.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        switchControl.rightAnchor.constraint(equalTo: rightAnchor, constant: -15).isActive = true
+        switchControl.rightAnchor.constraint(equalTo: rightAnchor, constant: -30).isActive = true
     }
     
     required init?(coder aDcoder: NSCoder) {
@@ -32,6 +42,7 @@ class SettingTableViewCell: UITableViewCell {
 
     @objc func handleSwitchAction(sender: UISwitch) {
         if sender.isOn {
+            // testing switches
             print("Turned on")
         } else {
             print("Turned off")

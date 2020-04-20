@@ -15,6 +15,8 @@ class MealViewController: UIViewController {
     private let notification = NotificationPublisher()
     
     let formatter = DateFormatter()
+    var mealID: UUID!
+    var mealList = MealList?.self
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +30,13 @@ class MealViewController: UIViewController {
         })
         
         formatter.dateFormat = "MMM dd, yyyy h:mm a"
-        //let currentDate = formatter.string(from: Date())
+        let currentDate = formatter.string(from: Date())
         // test notification
-        //notification.sendLocalNotification(title: "Food has been dispensed!", body: "2 1/2 cups at \(currentDate)", badge: 1, delayInterval: 30)
+        notification.sendLocalNotification(title: "Food has been dispensed!", body: "2 1/2 cups at \(currentDate)", badge: 1, delayInterval: 120)
+    }
+    
+    fileprivate func getMealIndex() -> Int! {
+        return Data.mealSchedules.firstIndex(where: { (mealList) -> Bool in mealList.id == mealID})
     }
 }
 
@@ -38,7 +44,6 @@ extension MealViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return Data.mealSchedules.count
-        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -82,7 +87,9 @@ extension MealViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        // swipe left to delete
+        // swipe left to delete a meal
+        let meal = Data.mealSchedules[indexPath.section].mealList[indexPath.row]
+        
         let delete = UIContextualAction(style: .destructive, title: "Delete") { (UIContextualAction, view, actionPerformed: @escaping (Bool) -> ()) in
 
             let alert = UIAlertController(title: "Delete Meal", message: "Are you sure you want to delete this meal?", preferredStyle: .alert)
@@ -90,7 +97,7 @@ extension MealViewController: UITableViewDataSource, UITableViewDelegate {
                 actionPerformed(false)
             }))
             alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {(alertAction) in
-                Schedule.swipeDeleteMeal(index: indexPath.row)
+                Schedule.deleteMeal(at: indexPath.section, meal: meal)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
                 actionPerformed(true)
 
