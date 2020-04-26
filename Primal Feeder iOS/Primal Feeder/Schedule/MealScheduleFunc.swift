@@ -51,7 +51,7 @@ class Schedule {
         }
     }
     
-    static func move2Past(completion: @ escaping () -> ()) {
+    static func moveToPast(completion: @ escaping () -> ()) {
         // move a meal from upcoming to past after food has been dispensed or an error has been raised
         DispatchQueue.global(qos: .userInteractive).async {
             
