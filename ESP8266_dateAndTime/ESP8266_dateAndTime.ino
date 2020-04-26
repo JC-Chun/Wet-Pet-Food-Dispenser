@@ -20,6 +20,7 @@ static char* password = "yourWiFiPasword";
 // Instantiate the ESP8266WebServer class, passing the argument 80 for the
 // port that the server will be listening.
 ESP8266WebServer server(80);
+
 // User-defined function that will be called when a client accesses the root
 // directory path of the ESP8266 host
 void handleRoot() {
