@@ -18,26 +18,23 @@
 		4924115A242C5ACF008DDEFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49241159242C5ACF008DDEFA /* Assets.xcassets */; };
 		4924115D242C5ACF008DDEFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4924115B242C5ACF008DDEFA /* LaunchScreen.storyboard */; };
 		492DACC0243680C300B384DF /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492DACBF243680C300B384DF /* MealViewController.swift */; };
-		492DACC22436857300B384DF /* MealListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492DACC12436857300B384DF /* MealListTableViewCell.swift */; };
 		493DBF192443BF6300CADD90 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493DBF182443BF6300CADD90 /* ScheduleViewController.swift */; };
 		493DBF1B2443C1BD00CADD90 /* InstantFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493DBF1A2443C1BD00CADD90 /* InstantFeedViewController.swift */; };
 		493DBF1D2443C3AB00CADD90 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493DBF1C2443C3AB00CADD90 /* DateExtension.swift */; };
 		493DBF1F2444A79900CADD90 /* NotificationPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493DBF1E2444A79900CADD90 /* NotificationPublisher.swift */; };
 		49532E1C244914E7002B6BE9 /* DispensedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49532E1B244914E7002B6BE9 /* DispensedViewController.swift */; };
 		49532E1E2449610A002B6BE9 /* mealSchedules.json in Resources */ = {isa = PBXBuildFile; fileRef = 49532E1D24496109002B6BE9 /* mealSchedules.json */; };
-		49532E202449614E002B6BE9 /* jsonDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49532E1F2449614E002B6BE9 /* jsonDecode.swift */; };
 		49532E232449D251002B6BE9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49532E222449D251002B6BE9 /* WelcomeViewController.swift */; };
 		498F57BF244CBC9F000DE814 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498F57BE244CBC9F000DE814 /* UserInfo.swift */; };
 		498F57C1244CC0A4000DE814 /* SettingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498F57C0244CC0A4000DE814 /* SettingSection.swift */; };
 		499D19EA243AE28D00E89E35 /* LevelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D19E9243AE28D00E89E35 /* LevelTableViewCell.swift */; };
 		49D0A7CB243B698D0019F8B3 /* LevelHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0A7CA243B698D0019F8B3 /* LevelHeaderTableViewCell.swift */; };
 		49D0A7CE243B73CF0019F8B3 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0A7CD243B73CF0019F8B3 /* SettingTableViewCell.swift */; };
-		49D0A7D0243B7F890019F8B3 /* SettingHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0A7CF243B7F890019F8B3 /* SettingHeaderTableViewCell.swift */; };
 		49DFB398242D071400623EC3 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFB397242D071400623EC3 /* FeedViewController.swift */; };
 		49DFB39C242D190A00623EC3 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFB39B242D190A00623EC3 /* LevelViewController.swift */; };
 		49DFB39E242D296400623EC3 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFB39D242D296400623EC3 /* SettingViewController.swift */; };
 		49DFB3A4242D475800623EC3 /* launchScreen.gif in Resources */ = {isa = PBXBuildFile; fileRef = 49DFB3A3242D475800623EC3 /* launchScreen.gif */; };
-		49DFB3A8242D50D500623EC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFB3A7242D50D500623EC3 /* ViewController.swift */; };
+		49DFB3A8242D50D500623EC3 /* PetProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFB3A7242D50D500623EC3 /* PetProfileViewController.swift */; };
 		49DFB3AC2432F29200623EC3 /* MealScheduleFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFB3AB2432F29200623EC3 /* MealScheduleFunc.swift */; };
 		49DFB3B4243373BA00623EC3 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFB3B3243373BA00623EC3 /* Data.swift */; };
 		49E2A7AC2445D46B00448D52 /* SchedulePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E2A7AB2445D46B00448D52 /* SchedulePopUpViewController.swift */; };
@@ -57,26 +54,23 @@
 		4924115C242C5ACF008DDEFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4924115E242C5ACF008DDEFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		492DACBF243680C300B384DF /* MealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
-		492DACC12436857300B384DF /* MealListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListTableViewCell.swift; sourceTree = "<group>"; };
 		493DBF182443BF6300CADD90 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		493DBF1A2443C1BD00CADD90 /* InstantFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantFeedViewController.swift; sourceTree = "<group>"; };
 		493DBF1C2443C3AB00CADD90 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		493DBF1E2444A79900CADD90 /* NotificationPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPublisher.swift; sourceTree = "<group>"; };
 		49532E1B244914E7002B6BE9 /* DispensedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispensedViewController.swift; sourceTree = "<group>"; };
 		49532E1D24496109002B6BE9 /* mealSchedules.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mealSchedules.json; sourceTree = "<group>"; };
-		49532E1F2449614E002B6BE9 /* jsonDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = jsonDecode.swift; sourceTree = "<group>"; };
 		49532E222449D251002B6BE9 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		498F57BE244CBC9F000DE814 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		498F57C0244CC0A4000DE814 /* SettingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSection.swift; sourceTree = "<group>"; };
 		499D19E9243AE28D00E89E35 /* LevelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelTableViewCell.swift; sourceTree = "<group>"; };
 		49D0A7CA243B698D0019F8B3 /* LevelHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		49D0A7CD243B73CF0019F8B3 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
-		49D0A7CF243B7F890019F8B3 /* SettingHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		49DFB397242D071400623EC3 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		49DFB39B242D190A00623EC3 /* LevelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
 		49DFB39D242D296400623EC3 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		49DFB3A3242D475800623EC3 /* launchScreen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = launchScreen.gif; sourceTree = "<group>"; };
-		49DFB3A7242D50D500623EC3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		49DFB3A7242D50D500623EC3 /* PetProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetProfileViewController.swift; sourceTree = "<group>"; };
 		49DFB3AB2432F29200623EC3 /* MealScheduleFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealScheduleFunc.swift; sourceTree = "<group>"; };
 		49DFB3B3243373BA00623EC3 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		49E2A7AB2445D46B00448D52 /* SchedulePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePopUpViewController.swift; sourceTree = "<group>"; };
@@ -139,7 +133,6 @@
 				493DBF1E2444A79900CADD90 /* NotificationPublisher.swift */,
 				49241150242C5ACD008DDEFA /* AppDelegate.swift */,
 				49241152242C5ACD008DDEFA /* SceneDelegate.swift */,
-				49532E1F2449614E002B6BE9 /* jsonDecode.swift */,
 				49241159242C5ACF008DDEFA /* Assets.xcassets */,
 				4924115B242C5ACF008DDEFA /* LaunchScreen.storyboard */,
 				4924115E242C5ACF008DDEFA /* Info.plist */,
@@ -152,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				492DACBF243680C300B384DF /* MealViewController.swift */,
-				492DACC12436857300B384DF /* MealListTableViewCell.swift */,
 				49132DEC2438AC8A00CBD8A9 /* MealListHeaderTableViewCell.swift */,
 			);
 			path = MealView;
@@ -185,7 +177,6 @@
 			children = (
 				49DFB39D242D296400623EC3 /* SettingViewController.swift */,
 				49D0A7CD243B73CF0019F8B3 /* SettingTableViewCell.swift */,
-				49D0A7CF243B7F890019F8B3 /* SettingHeaderTableViewCell.swift */,
 				498F57BE244CBC9F000DE814 /* UserInfo.swift */,
 				498F57C0244CC0A4000DE814 /* SettingSection.swift */,
 			);
@@ -217,7 +208,7 @@
 		49DFB3AE2432F81B00623EC3 /* Setup Views */ = {
 			isa = PBXGroup;
 			children = (
-				49DFB3A7242D50D500623EC3 /* ViewController.swift */,
+				49DFB3A7242D50D500623EC3 /* PetProfileViewController.swift */,
 				49532E222449D251002B6BE9 /* WelcomeViewController.swift */,
 			);
 			path = "Setup Views";
@@ -307,18 +298,16 @@
 				49532E232449D251002B6BE9 /* WelcomeViewController.swift in Sources */,
 				49132DED2438AC8A00CBD8A9 /* MealListHeaderTableViewCell.swift in Sources */,
 				49132DE82438767C00CBD8A9 /* MealSchedule.swift in Sources */,
-				49DFB3A8242D50D500623EC3 /* ViewController.swift in Sources */,
+				49DFB3A8242D50D500623EC3 /* PetProfileViewController.swift in Sources */,
 				49132DEB2438793C00CBD8A9 /* MockData.swift in Sources */,
 				492DACC0243680C300B384DF /* MealViewController.swift in Sources */,
 				4908ADC6243AA4D30099B11C /* FeederLevelFunc.swift in Sources */,
 				49DFB3B4243373BA00623EC3 /* Data.swift in Sources */,
 				49241151242C5ACD008DDEFA /* AppDelegate.swift in Sources */,
 				49532E1C244914E7002B6BE9 /* DispensedViewController.swift in Sources */,
-				492DACC22436857300B384DF /* MealListTableViewCell.swift in Sources */,
 				49DFB39C242D190A00623EC3 /* LevelViewController.swift in Sources */,
 				498F57BF244CBC9F000DE814 /* UserInfo.swift in Sources */,
 				49DFB398242D071400623EC3 /* FeedViewController.swift in Sources */,
-				49D0A7D0243B7F890019F8B3 /* SettingHeaderTableViewCell.swift in Sources */,
 				49DFB39E242D296400623EC3 /* SettingViewController.swift in Sources */,
 				493DBF1F2444A79900CADD90 /* NotificationPublisher.swift in Sources */,
 				49D0A7CE243B73CF0019F8B3 /* SettingTableViewCell.swift in Sources */,
@@ -329,7 +318,6 @@
 				49241153242C5ACD008DDEFA /* SceneDelegate.swift in Sources */,
 				49E2A7AC2445D46B00448D52 /* SchedulePopUpViewController.swift in Sources */,
 				499D19EA243AE28D00E89E35 /* LevelTableViewCell.swift in Sources */,
-				49532E202449614E002B6BE9 /* jsonDecode.swift in Sources */,
 				4908ADCA243AA5DC0099B11C /* FeederLevel.swift in Sources */,
 				493DBF1B2443C1BD00CADD90 /* InstantFeedViewController.swift in Sources */,
 				498F57C1244CC0A4000DE814 /* SettingSection.swift in Sources */,

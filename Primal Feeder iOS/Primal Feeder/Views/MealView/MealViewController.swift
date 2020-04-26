@@ -30,9 +30,9 @@ class MealViewController: UIViewController {
         })
         
         formatter.dateFormat = "MMM dd, yyyy h:mm a"
-        let currentDate = formatter.string(from: Date())
+        //let currentDate = formatter.string(from: Date())
         // test notification
-        notification.sendLocalNotification(title: "Food has been dispensed!", body: "2 1/2 cups at \(currentDate)", badge: 1, delayInterval: 120)
+//        notification.sendLocalNotification(title: "Food has been dispensed!", body: "2 1/2 cups at \(currentDate)", badge: 1, delayInterval: 200)
     }
     
     fileprivate func getMealIndex() -> Int! {

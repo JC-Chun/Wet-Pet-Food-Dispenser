@@ -117,6 +117,7 @@ class ScheduleViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // prepare segue to popup
         if segue.destination is SchedulePopUpViewController {
             let vc = segue.destination as? SchedulePopUpViewController
             vc?.popUpTitle = "Scheduled!"
@@ -125,6 +126,7 @@ class ScheduleViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
     }
     @IBAction func pressedToSchedule(_ sender: Any) {
+        // actions wehn 'Press to Schedule' button is pressed
         let newMeal = MealList(dateAndTime: newDate, portion: newPortion)
         
         Schedule.createMeal(index: 0, mealList: newMeal)

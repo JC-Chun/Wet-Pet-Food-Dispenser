@@ -103,7 +103,8 @@ class InstantFeedViewController: UIViewController, UIPickerViewDelegate, UIPicke
         let newMeal = MealList(dateAndTime: Date(), portion: newPortion)
         Schedule.createMeal(index: 1, mealList: newMeal)
         //
-        notificationPublisher.sendLocalNotification(title: "Food has been dispensed!", body: newPortion + " on " + formatter.string(from: Date()), badge: 1, delayInterval: 3)
+        //let currentDate = formatter.string(from: Date())
+        notificationPublisher.sendLocalNotification(title: "Food has been dispensed!", body: newPortion + " ", badge: 1, delayInterval: 5)
     }
         
 }

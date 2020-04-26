@@ -48,7 +48,7 @@ class SchedulePopUpViewController: UIViewController {
     }
     
     func dispensed() {
-        //
+        // Popup for instant feed confirmation
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.titleLabel.text = "Food Dispensed!"
             self.scheduleLabel.text = self.formatter.string(from: Date())
